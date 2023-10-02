@@ -3,8 +3,10 @@ package com.demidov.oldgrill.web;
 import com.demidov.oldgrill.Barbecue;
 import com.demidov.oldgrill.BarbecueOrder;
 import com.demidov.oldgrill.Ingredient;
+import com.demidov.oldgrill.data.IngredientRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -20,6 +22,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/design")
 @SessionAttributes("barbecueOrder")
 public class DesignBarbecueController {
+
+    private final IngredientRepository ingredientRepo;
+    @Autowired
+    public DesignBarbecueController(
+            IngredientRepository ingredientRepo) {
+        this.ingredientRepo = ingredientRepo;
+    }
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
