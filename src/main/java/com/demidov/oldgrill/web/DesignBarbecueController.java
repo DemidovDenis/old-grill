@@ -32,15 +32,16 @@ public class DesignBarbecueController {
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("PION", "Маринованный лук", Type.ONION),
-                new Ingredient("BAPO", "Запеченный картофель", Type.POTATO),
-                new Ingredient("TOCO", "Помидоры на углях", Type.VEGGIES),
-                new Ingredient("ZUCO", "Кабачки на углях", Type.VEGGIES),
-                new Ingredient("LETC", "Салат", Type.VEGGIES),
-                new Ingredient("KESA", "Шашлычный соус", Type.SAUCE),
-                new Ingredient("SOSA", "Сметанный соус", Type.SAUCE)
-        );
+        Iterable<Ingredient> ingredients = ingredientRepo.findAll();
+//        List<Ingredient> ingredients = Arrays.asList(
+//                new Ingredient("PION", "Маринованный лук", Type.ONION),
+//                new Ingredient("BAPO", "Запеченный картофель", Type.POTATO),
+//                new Ingredient("TOCO", "Помидоры на углях", Type.VEGGIES),
+//                new Ingredient("ZUCO", "Кабачки на углях", Type.VEGGIES),
+//                new Ingredient("LETC", "Салат", Type.VEGGIES),
+//                new Ingredient("KESA", "Шашлычный соус", Type.SAUCE),
+//                new Ingredient("SOSA", "Сметанный соус", Type.SAUCE)
+//        );
 
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
